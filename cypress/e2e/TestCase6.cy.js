@@ -3,14 +3,10 @@ import { faker } from "@faker-js/faker";
 describe("Contact Us Form", () => {
   it("Contact Us Form", () => {
     const randomEmail = faker.internet.email();
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     //Click on 'Contact Us' button
     cy.get(".shop-menu").within(() => {

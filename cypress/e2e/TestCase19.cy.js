@@ -1,6 +1,6 @@
 describe("View & Cart Brand Products", () => {
   it("View & Cart Brand Products", () => {
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Click on 'Products' button
     cy.contains("a", "Products").click();

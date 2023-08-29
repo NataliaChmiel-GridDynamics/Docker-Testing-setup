@@ -1,6 +1,6 @@
-describe("Place Order: Register before Checkout", () => {
-  it("Place Order: Register before Checkout", () => {
-    cy.visit("http://automationexercise.com");
+describe("Add to cart from Recommended items", () => {
+  it("Add to cart from Recommended items", () => {
+    cy.visit("/");
 
     //Scroll to bottom of page
     cy.scrollTo("bottom");

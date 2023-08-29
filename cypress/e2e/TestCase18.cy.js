@@ -1,13 +1,9 @@
 describe("View Category Products", () => {
   it("View Category Products", () => {
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     //Add products to cart
     cy.get(".category-products").should("exist");

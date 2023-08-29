@@ -1,28 +1,18 @@
-describe("Contact Us Form", () => {
-  it("Contact Us Form", () => {
-    cy.visit("http://automationexercise.com");
+describe("Add Products in Cart", () => {
+  it("Add Products in Cart", () => {
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     //Click on 'Products' button
     cy.get(".shop-menu").within(() => {
       cy.contains("a", "Products").click();
     });
 
-    //Hover over first product and click 'Add to cart'
-    cy.get(".overlay-content a:first").click({ force: true });
-
-    //Click 'Continue Shopping' button
-    cy.get(".close-modal").click();
-
-    //Hover over second product and click 'Add to cart'
-    cy.get(".overlay-content a").eq(1).click({ force: true });
-
+    //Adding products to Cart
+    cy.addProductsToCart();
+    
     //Click 'View Cart' button
     cy.get(".modal-content").within(() => {
       cy.contains("a", "View Cart").click();

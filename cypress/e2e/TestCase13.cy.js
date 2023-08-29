@@ -1,13 +1,9 @@
-describe("Contact Us Form", () => {
-  it("Contact Us Form", () => {
-    cy.visit("http://automationexercise.com");
+describe("Verify Product quantity in Cart", () => {
+  it("Verify Product quantity in Cart", () => {
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     //Click on 'Products' button
     cy.get(".choose a:first").within(() => {
@@ -29,6 +25,6 @@ describe("Contact Us Form", () => {
     });
 
     //Verify that product is displayed in cart page with exact quantity
-    cy.contains('button', '4').should('exist');
+    cy.contains("button", "4").should("exist");
   });
 });

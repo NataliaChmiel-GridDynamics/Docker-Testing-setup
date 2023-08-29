@@ -3,8 +3,7 @@ import { faker } from "@faker-js/faker";
 describe("Add review on product", () => {
   it("Add review on product", () => {
     const randomEmail = faker.internet.email();
-
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Click on 'Products' button
     cy.get(".shop-menu").within(() => {

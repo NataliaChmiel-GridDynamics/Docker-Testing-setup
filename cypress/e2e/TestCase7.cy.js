@@ -1,13 +1,9 @@
 describe("Verify Test Cases Page", () => {
   it("Verify Test Cases Page", () => {
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     // Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     // Click on 'Test Cases' button
     cy.get(".shop-menu").within(() => {

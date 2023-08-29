@@ -1,15 +1,9 @@
-//Search Product
-
 describe("Search Product", () => {
   it("Search Product", () => {
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
     //Click on 'Products' button
     cy.get('a[href="/products"]').click();

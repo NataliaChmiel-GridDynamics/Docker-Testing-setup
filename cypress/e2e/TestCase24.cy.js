@@ -1,28 +1,45 @@
-import { faker } from "@faker-js/faker";
+describe("Download Invoice after purchase order", () => {
+  it("Download Invoice after purchase order", () => {
 
-describe("Place Order: Register while Checkout", () => {
-  it("Place Order: Register while Checkout", () => {
-    const randomEmail = faker.internet.email();
-    const password = "password";
-    cy.visit("http://automationexercise.com");
+    cy.visit("/");
 
     //Verify that home page is visible successfully
-    cy.get(".shop-menu li:first > a").should(
-      "have.css",
-      "color",
-      "rgb(255, 165, 0)"
-    );
+    cy.isHomePageVisible();
 
-    //Scroll down page to bottom
-    cy.scrollTo('bottom');
+    //Click on 'Products' button
+    cy.get(".shop-menu").within(() => {
+      cy.contains("a", "Products").click();
+    });
 
-    //Verify 'SUBSCRIPTION' is visible
-    cy.contains('h2', 'Subscription').should('exist');
+    //Adding products to Cart
+    cy.addProductsToCart();
 
-    //Click on arrow at bottom right side to move upward
-    cy.get('a[id="scrollUp"]').click();
-    
-    
+    //Click 'View Cart' button
+    cy.get(".modal-content").within(() => {
+      cy.contains("a", "View Cart").click();
+    });
 
+    //Click Proceed To Checkout
+    cy.contains("a", "Proceed To Checkout").click();
+
+    //Click 'Register / Login' button
+    cy.contains("a", "Register / Login").click();
+
+    //Account creation process
+    cy.creatingAccount();
+
+    //Click 'Cart' button
+    cy.get(".shop-menu").within(() => {
+      cy.contains("a", "Cart").click();
+    });
+
+    //Order process
+    cy.orderPlacement();
+
+    //Click 'Download Invoice' button and verify invoice is downloaded successfully.
+    cy.contains("a", "Download Invoice").click();
+
+    //Click 'Delete Account' button and verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+    cy.deleteAccount();
   });
 });
